@@ -1,0 +1,9 @@
+[
+  { "name": "Books", "link": "/resources/books", "img": "../images/knowledge.svg" },
+  {
+    "name": "Communities Near Me",
+    "link": "/resources/local-community-networks",
+    "img": "../images/brainstorming.svg"
+  },
+  { "name": "Websites", "link": "/resources/websites", "img": "../images/online-research.svg" }
+]

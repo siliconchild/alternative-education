@@ -1,0 +1,39 @@
+[
+  {
+    "title": "Find Learning Spaces",
+    "link": "/alternative-learning-spaces",
+    "desc": "A Collection Of Alternative Learning Spaces Listed both Geographically and by Approach.",
+    "image": "../images/menu-learning-spaces.png"
+  },
+  {
+    "title": "Blog",
+    "link": "/blog",
+    "desc": "We love to share various experieces that inspire people to explore more on this space.",
+    "image": "../images/menu-blog.png"
+  },
+  {
+    "title": "Events",
+    "link": "/events",
+    "desc": "Know About & Participate in Events Happening in the Alternative Education Space",
+    "image": "../images/menu-events.png"
+  },
+  {
+    "title": "Career Opportunities",
+    "link": "/career-opportunities",
+    "desc": "Discover Career Openings Offered By Alternative Institutions Across India",
+    "image": "../images/menu-get-involved.png"
+  },
+  {
+    "title": "Resources",
+    "link": "/resources",
+    "desc": "A handful of resources to explore more about Alternative Education. Including Books, Videos and Websites.",
+    "image": "../images/menu-resources.png"
+  },
+  {
+    "title": "Group Chat",
+    "link": "https://airtable.com/shr1jEdfZptA3UK8Y",
+    "desc": "Have indepth coverstaions with the community on Alternative Education.",
+    "image": "../images/menu-forum.png",
+    "isHighlight": true
+  }
+]
