@@ -101,9 +101,13 @@ export const Search = styled(DebounceInput)`
   border: 1px solid var(--primary-color);
   @media screen and (max-width: 720px) {
     width: 100%;
+    box-shadow: none;
   }
 
   &:focus {
     box-shadow: 0 0 15px var(--primary-color);
+    @media screen and (max-width: 720px) {
+      box-shadow: 0 0 2px var(--primary-color-transparent);
+    }
   }
 `;
