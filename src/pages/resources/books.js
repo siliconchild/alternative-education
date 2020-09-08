@@ -56,7 +56,7 @@ const BookGrid = styled.div`
   flex-wrap: wrap;
   margin: 5rem 0;
   @media screen and (max-width: 720px) {
-    margin: 1rem 0;
+    margin: 2rem 0;
   }
   & > * {
     flex: 0 0 calc(20% - 3.2rem);

@@ -53,7 +53,7 @@ export default function LocalCommunityNetworks({ data: { localCommunities } }) {
   // });
 
   return (
-    <LocalCommunitiesContainer>
+    <>
       <ReactMapGL
         {...viewport}
         mapStyle="mapbox://styles/alternativeeducation/ckerbxbvw6nyc19qq0ruph1pp"
@@ -86,13 +86,9 @@ export default function LocalCommunityNetworks({ data: { localCommunities } }) {
         )}
       </ReactMapGL>
       <AddNewButton link="https://airtable.com/shrbltvCXG4RGQxeh">Add Community</AddNewButton>
-    </LocalCommunitiesContainer>
+    </>
   );
 }
-
-const LocalCommunitiesContainer = styled.div`
-  margin: 0 !important;
-`;
 
 const MarkerAction = styled.button`
   background: none;

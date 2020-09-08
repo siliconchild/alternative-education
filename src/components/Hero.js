@@ -27,6 +27,7 @@ const HeroContainer = styled.div`
 
   @media screen and (max-width: 720px) {
     flex-direction: column;
+    margin-top: 2rem;
   }
 `;
 

@@ -45,7 +45,11 @@ export default function Events() {
 
 /* Styles */
 
-const EventsContainer = styled.div``;
+const EventsContainer = styled.div`
+  @media screen and (max-width: 720px) {
+    margin-top: 3rem;
+  }
+`;
 const Title = styled.h2`
   font-size: 2.7rem;
   margin-bottom: 5rem;

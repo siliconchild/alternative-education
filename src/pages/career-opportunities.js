@@ -131,7 +131,7 @@ const ListingCardContainer = styled.div`
   }
   @media screen and (max-width: 720px) {
     width: 100%;
-    margin: 0 0 5rem;
+    margin: 2rem 0 5rem;
   }
 `;
 

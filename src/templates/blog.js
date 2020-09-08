@@ -97,7 +97,7 @@ const BlogGrid = styled.div`
 
   @media screen and (max-width: 720px) {
     flex-direction: column;
-    margin: 1rem 0;
+    margin: 2rem 0;
   }
   & > * {
     flex: 0 0 calc(33.33% - 4rem);

@@ -158,7 +158,7 @@ const Header = styled.div`
   }
   @media screen and (max-width: 720px) {
     flex-direction: column;
-    margin: 0 0 1rem;
+    margin: 2rem 0 1rem;
   }
 `;
 

@@ -108,7 +108,7 @@ const LearningSpaceContainer = styled.div`
   margin: 4rem 0;
   position: relative;
   @media screen and (max-width: 720px) {
-    margin: 0.5rem 0 3rem;
+    margin: 1rem 0 3rem;
   }
 `;
 

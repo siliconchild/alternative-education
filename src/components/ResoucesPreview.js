@@ -44,6 +44,9 @@ export default function ResoucesPreview({ column }) {
 
 const ResoucesPreviewContainer = styled.div`
   /* background: #f5f9fd; */
+  @media screen and (max-width: 720px) {
+    margin-top: 2rem;
+  }
 `;
 
 const Title = styled.h2`
