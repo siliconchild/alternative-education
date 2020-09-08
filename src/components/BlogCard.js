@@ -1,30 +1,13 @@
 import React from 'react';
 import styled, { css } from 'styled-components';
-import Img from 'gatsby-image';
-import { useStaticQuery, graphql } from 'gatsby';
+import Img from './Image.js';
 import { BsFillPersonFill } from 'react-icons/bs';
 import Link from './Link';
 
 export default function BlogCard({ props: { banner, title, content, author, slug, column, mini } }) {
-  const { file: placeholderImage } = useStaticQuery(graphql`
-    {
-      file(relativePath: { eq: "placeholder-gallery.png" }) {
-        childImageSharp {
-          fluid(maxWidth: 400) {
-            ...GatsbyImageSharpFluid_withWebp
-          }
-        }
-      }
-    }
-  `);
-
-  const cardImage = banner.localFiles
-    ? banner.localFiles[0].childImageSharp.fluid
-    : placeholderImage.childImageSharp.fluid;
-
   return (
-    <BlogCardContainer column={column} mini={mini} to={`/blog/${slug}`} direction="right">
-      <Image fluid={cardImage} />
+    <BlogCardContainer column={column ? column : null} mini={mini ? mini : null} to={`/blog/${slug}`} direction="right">
+      <Image fluid={banner.localFiles[0].childImageSharp.fluid} />
       <Body>
         <Title>{title}</Title>
         <p>

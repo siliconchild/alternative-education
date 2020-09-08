@@ -1,25 +1,11 @@
 import React from 'react';
 import styled from 'styled-components';
-import { useStaticQuery, graphql } from 'gatsby';
 import { Button } from '../styles/baseStyles.js';
 import LocationSVG from '../images/location.svg';
-import Img from 'gatsby-image';
+import Img from './Image.js';
 import Link from './Link';
 
 export default function EventCard({ props: { start_date, name, location, banner, description, link } }) {
-  const { file: placeholderImage } = useStaticQuery(graphql`
-    {
-      file(relativePath: { eq: "placeholder-gallery.png" }) {
-        childImageSharp {
-          fluid(maxWidth: 400) {
-            src
-          }
-        }
-      }
-    }
-  `);
-
-  const cardImage = banner ? banner.localFiles[0].childImageSharp.fluid : placeholderImage.childImageSharp.fluid;
   return (
     <EventCardContainer>
       <SideLine />
@@ -31,7 +17,7 @@ export default function EventCard({ props: { start_date, name, location, banner,
           <span>{location}</span>
         </Location>
       </Head>
-      <Image fluid={cardImage} />
+      <Image fluid={banner.localFiles[0].childImageSharp.fluid} />
       <Body>
         <Description>{description}</Description>
         <Link to={link}>

@@ -1,7 +1,6 @@
 import React from 'react';
 import styled from 'styled-components';
-import Img from 'gatsby-image';
-import { useStaticQuery, graphql } from 'gatsby';
+import Img from './Image.js';
 import Link from './Link';
 import { FaGlobe, FaPhone, FaEnvelope } from 'react-icons/fa';
 import { FiPlus } from 'react-icons/fi';
@@ -9,24 +8,10 @@ import { FiPlus } from 'react-icons/fi';
 export default function LearningSpaceCard({
   props: { image, name, approach, city, state, description, website, phone, email, slug },
 }) {
-  const { file: placeholderImage } = useStaticQuery(graphql`
-    {
-      file(relativePath: { eq: "placeholder-gallery.png" }) {
-        childImageSharp {
-          fluid(maxWidth: 400) {
-            ...GatsbyImageSharpFluid_withWebp
-          }
-        }
-      }
-    }
-  `);
-
-  const cardImage = image ? image.localFiles[0].childImageSharp.fluid : placeholderImage.childImageSharp.fluid;
-
   return (
     <LearningSpaceCardContainer>
       <Link to={`/alternative-learning-spaces/${slug}`} direction="right">
-        <Image fluid={cardImage} />
+        <Image fluid={image.localFiles[0].childImageSharp.fluid} />
         <Title>{name}</Title>
       </Link>
       <Body>
