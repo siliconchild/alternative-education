@@ -238,7 +238,9 @@ const Article = styled.div`
   border-radius: 0.25rem;
   color: #f7cf9e;
   @media screen and (max-width: 720px) {
-    margin: 2.5rem 2rem 2rem 0;
+    margin: 2rem 2rem 0 0;
+    padding: 1rem 0 1rem 0.5rem;
+    width: 100%;
   }
   svg {
     margin-right: 1rem;
