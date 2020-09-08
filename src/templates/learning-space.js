@@ -1,9 +1,8 @@
 import React from 'react';
 import styled from 'styled-components';
 import { graphql } from 'gatsby';
-import Layout from '../components/Layout.js';
 import { Container } from '../styles/baseStyles.js';
-import Img from 'gatsby-image';
+import Img from '../components/Image';
 import { RiPhoneLine, RiLinksLine, RiMailOpenLine } from 'react-icons/ri';
 import { FaMapMarkerAlt, FaPenNib } from 'react-icons/fa';
 import Link from '../components/Link.js';
@@ -51,7 +50,7 @@ export default function learningSpace({
   },
 }) {
   return (
-    <Layout>
+    <>
       <Container wide>
         <LearningSpaceContainer>
           <Image fluid={image.localFiles[0].childImageSharp.fluid} />
@@ -101,7 +100,7 @@ export default function learningSpace({
         </LearningSpaceContainer>
       </Container>
       <AddNewButton link="https://airtable.com/shrrRFKNBmz9wDd4W">Add Learning Space</AddNewButton>
-    </Layout>
+    </>
   );
 }
 

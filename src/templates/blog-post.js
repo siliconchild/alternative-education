@@ -1,9 +1,8 @@
 import React from 'react';
 import styled from 'styled-components';
 import { graphql } from 'gatsby';
-import Layout from '../components/Layout.js';
 import { Container } from '../styles/baseStyles';
-import Img from 'gatsby-image';
+import Img from '../components/Image';
 import sanitizeHtml from 'sanitize-html';
 import { BsFillPersonFill } from 'react-icons/bs';
 import { RiTimerLine } from 'react-icons/ri';
@@ -32,13 +31,6 @@ export const blogPostQuery = graphql`
         }
       }
     }
-    placeholderImage: file(relativePath: { eq: "placeholder-gallery.png" }) {
-      childImageSharp {
-        fluid(maxWidth: 800) {
-          ...GatsbyImageSharpFluid_withWebp
-        }
-      }
-    }
   }
 `;
 
@@ -47,36 +39,30 @@ export default function BlogPost({
     blog: {
       data: { title, author, content, published, banner },
     },
-    placeholderImage,
   },
 }) {
-  const postImage = banner.localFiles
-    ? banner.localFiles[0].childImageSharp.fluid
-    : placeholderImage.childImageSharp.fluid;
   const cleanHTML = sanitizeHtml(content.childMarkdownRemark.html, {
     allowedTags: sanitizeHtml.defaults.allowedTags.concat(['img']),
   });
   return (
-    <Layout>
-      <Container narrow>
-        <BlogPostContainer>
-          <Image fluid={postImage} />
-          <Meta>
-            <SubTitle>
-              <BsFillPersonFill /> {author}
-            </SubTitle>
-            <SubTitle>
-              <RiTimerLine /> {`${content.childMarkdownRemark.timeToRead}m read`}{' '}
-            </SubTitle>
-          </Meta>
-          <h1>{title}</h1>
-          <Content
-            dangerouslySetInnerHTML={{
-              __html: cleanHTML,
-            }}></Content>
-        </BlogPostContainer>
-      </Container>
-    </Layout>
+    <Container narrow>
+      <BlogPostContainer>
+        <Image fluid={banner.localFiles[0].childImageSharp.fluid} />
+        <Meta>
+          <SubTitle>
+            <BsFillPersonFill /> {author}
+          </SubTitle>
+          <SubTitle>
+            <RiTimerLine /> {`${content.childMarkdownRemark.timeToRead}m read`}{' '}
+          </SubTitle>
+        </Meta>
+        <h1>{title}</h1>
+        <Content
+          dangerouslySetInnerHTML={{
+            __html: cleanHTML,
+          }}></Content>
+      </BlogPostContainer>
+    </Container>
   );
 }
 

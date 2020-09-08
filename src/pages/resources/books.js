@@ -1,9 +1,8 @@
 import React from 'react';
 import styled from 'styled-components';
-import Layout from '../../components/Layout.js';
 import { Container } from '../../styles/baseStyles.js';
 import { graphql } from 'gatsby';
-import Img from 'gatsby-image';
+import Img from '../../components/Image';
 import Link from '../../components/Link';
 import AddNewButton from '../../components/AddNewButton';
 
@@ -35,7 +34,7 @@ export const bookQuery = graphql`
 
 export default function Books({ data: { books } }) {
   return (
-    <Layout>
+    <>
       <Container>
         <BookGrid>
           {books.edges.map(({ node }) => (
@@ -48,7 +47,7 @@ export default function Books({ data: { books } }) {
         </BookGrid>
       </Container>
       <AddNewButton link="https://airtable.com/shrkYRzshU92rnuoR">Add Book</AddNewButton>
-    </Layout>
+    </>
   );
 }
 
