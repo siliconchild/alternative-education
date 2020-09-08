@@ -55,6 +55,9 @@ export default function Home({ data: { allAirtableLearningSpaces } }) {
 
   useEffect(() => {
     setCurrentList(filteredList.slice(0, initCardCount));
+    return () => {
+      setCurrentList([]);
+    };
   }, [filteredList]);
 
   const loadMore = useCallback(() => {
