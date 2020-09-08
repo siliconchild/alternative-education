@@ -9,7 +9,7 @@ const Link = ({ to, ...props }) => {
         {props.children}
       </a>
     );
-  } else {
+  } else if (to && to !== '') {
     return (
       <AniLink
         cover
@@ -19,6 +19,8 @@ const Link = ({ to, ...props }) => {
         {...props}
       />
     );
+  } else {
+    return null;
   }
 };
 
