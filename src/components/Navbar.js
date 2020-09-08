@@ -17,14 +17,13 @@ export default function Navbar() {
     }
   `);
   const [isHamburgerMenuOpen, setIsHamburgerMenuOpen] = useState(false);
-  const handleMenuToggle = () => setIsHamburgerMenuOpen(prevState => !prevState);
   return (
     <Nav>
       <NavbarContainer>
         <Logo direction="left" to="/">
           Alt<span>Education</span>
         </Logo>
-        <MenuToggle onClick={handleMenuToggle} open={isHamburgerMenuOpen}>
+        <MenuToggle onClick={() => setIsHamburgerMenuOpen(prevState => !prevState)} open={isHamburgerMenuOpen}>
           <div></div>
           <div></div>
           <div></div>
@@ -116,9 +115,11 @@ const MenuToggle = styled.div`
   display: none;
   margin-left: 1rem;
   transition: all 0.2s;
+  flex-direction: column;
+  justify-content: space-between;
+  margin-left: 0;
 
-  div {
-    content: '';
+  & > div {
     display: block;
     height: 0.3rem;
     width: 100%;
@@ -147,9 +148,6 @@ const MenuToggle = styled.div`
 
   @media screen and (max-width: 1024px) {
     display: flex;
-    flex-direction: column;
-    justify-content: space-between;
-    margin-left: 0;
   }
 `;
 
