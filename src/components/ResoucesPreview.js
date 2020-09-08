@@ -74,10 +74,13 @@ const ResourceItem = styled(Link)`
   ${props =>
     props.column &&
     css`
-      flex: 0 0 32%;
+      flex: 0 0 31%;
       flex-direction: row;
       justify-content: space-between;
-      padding: 3rem 3.5rem;
+      padding: 3rem 3rem 3rem 4rem;
+      ${Head} {
+        align-items: flex-start;
+      }
     `}
 
   @media screen and (max-width: 720px) {
@@ -93,24 +96,35 @@ const ResourceItem = styled(Link)`
     ${props => props.column && `margin-right: 4rem;`}
     @media screen and (max-width: 720px) {
       margin-right: 0;
-      margin-bottom: 4rem;
+      margin-bottom: 3.5rem;
     }
   }
   h2 {
     margin: 1rem 2.5rem 2.5rem;
     text-align: center;
-    ${props => props.column && `margin: 0 0 3rem 0; font-size:2.2rem;`}
+    ${props =>
+      props.column &&
+      css`
+        margin: 0 0 3rem 0;
+        font-size: 2.2rem;
+        text-align: left;
+      `}
     color: var(--text-dark-mid);
     @media screen and (max-width: 720px) {
       font-size: 2.15rem;
       text-align: left;
-      margin: 1.5rem 0 2.5rem;
+      margin: 1.5rem 0 3rem;
     }
   }
   img {
     height: 15rem;
     margin: 4rem 0 0;
-    ${props => props.column && `margin: 0 0 0 1rem;height:14rem;`}
+    ${props =>
+      props.column &&
+      css`
+        margin: 0 0 0 1rem;
+        height: 14.5rem;
+      `}
     @media screen and (max-width: 720px) {
       margin-right: 0;
       height: 14rem;
