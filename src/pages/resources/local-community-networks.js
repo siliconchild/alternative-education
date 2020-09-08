@@ -1,7 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { graphql } from 'gatsby';
 import styled from 'styled-components';
-import Layout from '../../components/Layout.js';
 import { Container } from '../../styles/baseStyles';
 import ReactMapGL, { Marker, Popup } from 'react-map-gl';
 import PinSVG from '../../images/pin.svg';
@@ -54,42 +53,40 @@ export default function LocalCommunityNetworks({ data: { localCommunities } }) {
   // });
 
   return (
-    <Layout>
-      <LocalCommunitiesContainer>
-        <ReactMapGL
-          {...viewport}
-          mapStyle="mapbox://styles/alternativeeducation/ckerbxbvw6nyc19qq0ruph1pp"
-          mapboxApiAccessToken={process.env.GATSBY_MAPBOX_API_TOKEN}
-          onViewportChange={viewport => setViewport(viewport)}>
-          {localCommunities.edges.map(({ node }) => {
-            return (
-              <Marker key={node.recordId} latitude={node.data.latitude} longitude={node.data.longitude}>
-                <MarkerAction onClick={() => setSelectedMarker(node.data)}>
-                  <PinIcon src={PinSVG} />
-                  <MarkerLabel>{node.data.name}</MarkerLabel>
-                </MarkerAction>
-              </Marker>
-            );
-          })}
-          {selectedMarker && (
-            <Popup
-              latitude={selectedMarker.latitude}
-              longitude={selectedMarker.longitude}
-              onClose={() => setSelectedMarker(null)}
-              closeOnClick={false}>
-              <PopupBody>
-                <h4>{selectedMarker.name}</h4>
-                <Link to={selectedMarker.website}>
-                  <BiLinkExternal />
-                  {selectedMarker.website}
-                </Link>
-              </PopupBody>
-            </Popup>
-          )}
-        </ReactMapGL>
-      </LocalCommunitiesContainer>
+    <LocalCommunitiesContainer>
+      <ReactMapGL
+        {...viewport}
+        mapStyle="mapbox://styles/alternativeeducation/ckerbxbvw6nyc19qq0ruph1pp"
+        mapboxApiAccessToken={process.env.GATSBY_MAPBOX_API_TOKEN}
+        onViewportChange={viewport => setViewport(viewport)}>
+        {localCommunities.edges.map(({ node }) => {
+          return (
+            <Marker key={node.recordId} latitude={node.data.latitude} longitude={node.data.longitude}>
+              <MarkerAction onClick={() => setSelectedMarker(node.data)}>
+                <PinIcon src={PinSVG} />
+                <MarkerLabel>{node.data.name}</MarkerLabel>
+              </MarkerAction>
+            </Marker>
+          );
+        })}
+        {selectedMarker && (
+          <Popup
+            latitude={selectedMarker.latitude}
+            longitude={selectedMarker.longitude}
+            onClose={() => setSelectedMarker(null)}
+            closeOnClick={false}>
+            <PopupBody>
+              <h4>{selectedMarker.name}</h4>
+              <Link to={selectedMarker.website}>
+                <BiLinkExternal />
+                {selectedMarker.website}
+              </Link>
+            </PopupBody>
+          </Popup>
+        )}
+      </ReactMapGL>
       <AddNewButton link="https://airtable.com/shrbltvCXG4RGQxeh">Add Community</AddNewButton>
-    </Layout>
+    </LocalCommunitiesContainer>
   );
 }
 

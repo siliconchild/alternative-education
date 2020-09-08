@@ -1,7 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import styled, { css } from 'styled-components';
-import Layout from '../components/Layout.js';
-import { Container, Search } from '../styles/baseStyles';
+import { Container } from '../styles/baseStyles';
 import { graphql } from 'gatsby';
 import LocationSVG from '../images/location.svg';
 import sanitizeHtml from 'sanitize-html';
@@ -50,7 +49,7 @@ export default function CareerOpportunities({ data: { careers } }) {
   }, [isMobile]);
 
   return (
-    <Layout>
+    <>
       <Container wide>
         <ListingCardContainer>
           {careers.edges.map(({ node }, index) => {
@@ -120,7 +119,7 @@ export default function CareerOpportunities({ data: { careers } }) {
         </ListingCardContainer>
       </Container>
       <AddNewButton link="https://airtable.com/shrvH8t45lA1amxmQ">Add Listing</AddNewButton>
-    </Layout>
+    </>
   );
 }
 

@@ -1,6 +1,5 @@
 import React from 'react';
 import styled from 'styled-components';
-import Layout from '../../components/Layout.js';
 import { graphql } from 'gatsby';
 import { Container } from '../../styles/baseStyles';
 import { MdExpandMore } from 'react-icons/md';
@@ -27,7 +26,7 @@ export const websitesQuery = graphql`
 
 export default function Websites({ data: { websites } }) {
   return (
-    <Layout>
+    <>
       <Container narrow>
         <WebsitesContainer>
           {websites.edges.map(({ node }) => (
@@ -44,7 +43,7 @@ export default function Websites({ data: { websites } }) {
         </WebsitesContainer>
       </Container>
       <AddNewButton link="https://airtable.com/shrGoeiQgcDomTh6D">Add Website</AddNewButton>
-    </Layout>
+    </>
   );
 }
 

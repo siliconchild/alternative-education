@@ -1,26 +1,23 @@
 import React from 'react';
 import styled from 'styled-components';
-import Layout from '../components/Layout.js';
-import Hero from '../components/Hero.js';
 import { Container } from '../styles/baseStyles.js';
+import Hero from '../components/Hero.js';
 import GridMenu from '../components/GridMenu.js';
-import Events from '../components/Events.js';
 import ResoucesPreview from '../components/ResoucesPreview.js';
+import Events from '../components/Events.js';
 import BlogPreview from '../components/BlogPreview.js';
 
 export default function Home() {
   return (
-    <Layout>
-      <Container>
-        <HomePage>
-          <Hero />
-          <GridMenu />
-          <ResoucesPreview column="true" />
-          <Events />
-          <BlogPreview />
-        </HomePage>
-      </Container>
-    </Layout>
+    <Container>
+      <HomePage>
+        <Hero />
+        <GridMenu />
+        <ResoucesPreview column="true" />
+        <Events />
+        <BlogPreview />
+      </HomePage>
+    </Container>
   );
 }
 

@@ -1,18 +1,15 @@
 import React from 'react';
 import styled from 'styled-components';
-import Layout from '../components/Layout.js';
 import { Container } from '../styles/baseStyles';
 import ResourcesPreview from '../components/ResoucesPreview';
 
 export default function Resources() {
   return (
-    <Layout>
-      <Container>
-        <ResoucesPreviewPageContainer>
-          <ResourcesPreview />
-        </ResoucesPreviewPageContainer>
-      </Container>
-    </Layout>
+    <Container>
+      <ResoucesPreviewPageContainer>
+        <ResourcesPreview />
+      </ResoucesPreviewPageContainer>
+    </Container>
   );
 }
 

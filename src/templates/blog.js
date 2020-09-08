@@ -1,6 +1,5 @@
 import React from 'react';
 import styled from 'styled-components';
-import Layout from '../components/Layout.js';
 import { Container } from '../styles/baseStyles.js';
 import BlogCard from '../components/BlogCard.js';
 import { graphql, Link } from 'gatsby';
@@ -75,23 +74,19 @@ export default function blog({ data: { blogs }, pageContext }) {
     //   </Container>
     // </Layout>
 
-    <Layout>
-      <Container>
-        <BlogGrid>
-          {blogs.edges
-            // .filter((_, index) => String(index).match(new RegExp('[012]')))
-            .map(({ node }) => (
-              <BlogCard key={node.recordId} props={{ ...node.data, column: false }} />
-            ))}
-        </BlogGrid>
-        <Navigation>
-          {pageContext.previousPagePath && <Link to={pageContext.previousPagePath}>Previous Page</Link>}
-          {pageContext.numberOfPages > pageContext.pageNumber + 1 && (
-            <Link to={pageContext.nextPagePath}>Next Page</Link>
-          )}
-        </Navigation>
-      </Container>
-    </Layout>
+    <Container>
+      <BlogGrid>
+        {blogs.edges
+          // .filter((_, index) => String(index).match(new RegExp('[012]')))
+          .map(({ node }) => (
+            <BlogCard key={node.recordId} props={{ ...node.data, column: false }} />
+          ))}
+      </BlogGrid>
+      <Navigation>
+        {pageContext.previousPagePath && <Link to={pageContext.previousPagePath}>Previous Page</Link>}
+        {pageContext.numberOfPages > pageContext.pageNumber + 1 && <Link to={pageContext.nextPagePath}>Next Page</Link>}
+      </Navigation>
+    </Container>
   );
 }
 

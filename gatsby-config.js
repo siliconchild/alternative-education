@@ -19,6 +19,12 @@ module.exports = {
     `gatsby-transformer-json`,
     `gatsby-plugin-transition-link`,
     {
+      resolve: `gatsby-plugin-layout`,
+      options: {
+        component: require.resolve(`./src/components/Layout.js`),
+      },
+    },
+    {
       resolve: `gatsby-transformer-remark`,
       options: {
         plugins: [

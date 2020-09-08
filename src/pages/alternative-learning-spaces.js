@@ -1,7 +1,6 @@
 import React, { useState, useEffect, useRef, useCallback } from 'react';
 import { graphql } from 'gatsby';
 import styled from 'styled-components';
-import Layout from '../components/Layout.js';
 import { Container } from '../styles/baseStyles.js';
 import LightSVG from '../images/idea.svg';
 import LearningSpaceCard from '../components/LearningSpaceCard.js';
@@ -100,7 +99,7 @@ export default function Home({ data: { allAirtableLearningSpaces } }) {
   };
 
   return (
-    <Layout>
+    <>
       <Container wide>
         <Header>
           <img height="150" src={LightSVG} alt="section header logo" />
@@ -130,7 +129,7 @@ export default function Home({ data: { allAirtableLearningSpaces } }) {
         <div ref={next}></div>
       </Container>
       <AddNewButton link="https://airtable.com/shrrRFKNBmz9wDd4W">Add Learning Space</AddNewButton>
-    </Layout>
+    </>
   );
 }
 
