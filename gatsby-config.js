@@ -120,6 +120,7 @@ module.exports = {
             baseId: `appQUEfCOXkKANMuw`,
             tableName: `careers`,
             queryName: `Careers`,
+            mapping: { description: `text/markdown` },
             separateNodeType: true,
           },
           {
