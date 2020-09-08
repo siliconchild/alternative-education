@@ -18,7 +18,10 @@ exports.createPages = async ({ actions: { createPage }, graphql }) => {
           }
         }
       }
-      blog: allAirtableBlog(sort: { fields: data___published, order: DESC }) {
+      blog: allAirtableBlog(
+        filter: { data: { publish: { eq: true } } }
+        sort: { fields: data___published, order: DESC }
+      ) {
         edges {
           node {
             recordId
