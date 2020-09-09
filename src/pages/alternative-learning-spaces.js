@@ -4,7 +4,6 @@ import styled from 'styled-components';
 import { Container } from '../styles/baseStyles.js';
 import LightSVG from '../images/idea.svg';
 import LearningSpaceCard from '../components/LearningSpaceCard.js';
-import { v4 as uuid } from 'uuid';
 import Fuse from 'fuse.js';
 import useWindowSize from '../hooks/useWindowSize';
 import { DebounceInput } from 'react-debounce-input';
@@ -55,9 +54,6 @@ export default function Home({ data: { allAirtableLearningSpaces } }) {
 
   useEffect(() => {
     setCurrentList(filteredList.slice(0, initCardCount));
-    return () => {
-      setCurrentList([]);
-    };
   }, [filteredList]);
 
   const loadMore = useCallback(() => {
@@ -126,7 +122,7 @@ export default function Home({ data: { allAirtableLearningSpaces } }) {
           {currentList.map(el => {
             let data;
             el.item ? (data = el.item.node.data) : (data = el.node.data); // Fuse JS Returns a Nested Object as Search Result. This Prevents the need for an additional Map Method on The Result.
-            return <LearningSpaceCard key={uuid()} props={data} />;
+            return <LearningSpaceCard key={el.recordId} props={data} />;
           })}
         </LearningSpacesPreview>
         <div ref={next}></div>
