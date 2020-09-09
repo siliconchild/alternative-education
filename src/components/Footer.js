@@ -59,6 +59,7 @@ const FooterContainer = styled.footer`
   z-index: 1;
   @media screen and (max-width: 720px) {
     padding: 3rem 2rem 4rem;
+    z-index: -1;
   }
 `;
 
