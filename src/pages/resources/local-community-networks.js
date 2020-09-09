@@ -7,6 +7,7 @@ import PinSVG from '../../images/pin.svg';
 import { BiLinkExternal } from 'react-icons/bi';
 import Link from '../../components/Link';
 import AddNewButton from '../../components/AddNewButton';
+import { SpinnerOverlayContainer, SpinnerContainer } from '../../styles/baseStyles';
 
 export const localCommunitiesQuery = graphql`
   {
@@ -38,6 +39,7 @@ export default function LocalCommunityNetworks({ data: { localCommunities } }) {
   });
 
   const [selectedMarker, setSelectedMarker] = useState(null);
+  const [isMounted, setIsMounted] = useState(false);
 
   // useEffect(() => {
   //   navigator.geolocation.getCurrentPosition(({ coords: { accuracy, latitude, longitude } }) => {
@@ -54,11 +56,17 @@ export default function LocalCommunityNetworks({ data: { localCommunities } }) {
 
   return (
     <>
+      {!isMounted && (
+        <SpinnerOverlayContainer>
+          <SpinnerContainer />
+        </SpinnerOverlayContainer>
+      )}
       <ReactMapGL
         {...viewport}
         mapStyle="mapbox://styles/alternativeeducation/ckerbxbvw6nyc19qq0ruph1pp"
         mapboxApiAccessToken={process.env.GATSBY_MAPBOX_API_TOKEN}
-        onViewportChange={viewport => setViewport(viewport)}>
+        onViewportChange={viewport => setViewport(viewport)}
+        onLoad={() => setIsMounted(true)}>
         {localCommunities.edges.map(({ node }) => {
           return (
             <Marker key={node.recordId} latitude={node.data.latitude} longitude={node.data.longitude}>
