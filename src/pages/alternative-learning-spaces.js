@@ -45,7 +45,7 @@ export const query = graphql`
   }
 `;
 
-export default function Home({ data: { allAirtableLearningSpaces } }) {
+export default function LearningSpacesPage({ data: { allAirtableLearningSpaces } }) {
   const next = useRef();
   const [filteredList, setFilteredList] = useState(allAirtableLearningSpaces.edges);
   const [currentList, setCurrentList] = useState([]);
