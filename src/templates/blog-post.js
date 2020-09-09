@@ -138,5 +138,8 @@ const Content = styled.div`
 
   img {
     margin: 2rem 0 0.5rem;
+    @media screen and (max-width: 720px) {
+      max-width: 70vw;
+    }
   }
 `;
