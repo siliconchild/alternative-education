@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import styled, { css, keyframes } from 'styled-components';
 import { useStaticQuery, graphql } from 'gatsby';
 import Link from './Link';
+import useHasMounted from '../hooks/useHasMounted';
 
 export default function Navbar() {
   const { allMenuJson } = useStaticQuery(graphql`
@@ -16,6 +17,7 @@ export default function Navbar() {
       }
     }
   `);
+  let isMounted = useHasMounted();
   const [isHamburgerMenuOpen, setIsHamburgerMenuOpen] = useState(false);
   return (
     <Nav>
@@ -23,11 +25,14 @@ export default function Navbar() {
         <Logo direction="left" to="/">
           Alt<span>Education</span>
         </Logo>
-        <MenuToggle onClick={() => setIsHamburgerMenuOpen(prevState => !prevState)} open={isHamburgerMenuOpen}>
-          <div></div>
-          <div></div>
-          <div></div>
-        </MenuToggle>
+        {/* This fixes react rehydration wrongly placing MenuToggle at the bottom of the screen. */}
+        {isMounted && (
+          <MenuToggle onClick={() => setIsHamburgerMenuOpen(prevState => !prevState)} open={isHamburgerMenuOpen}>
+            <div></div>
+            <div></div>
+            <div></div>
+          </MenuToggle>
+        )}
         <Menu show={isHamburgerMenuOpen}>
           {allMenuJson.edges.map(({ node }) => (
             <MenuItem key={node.link} to={node.link} direction="right">
