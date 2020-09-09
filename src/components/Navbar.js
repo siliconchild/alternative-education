@@ -63,9 +63,9 @@ const Nav = styled.nav`
   }
 
   & + * {
-    margin-top: 6rem;
+    margin-top: 6rem !important;
     @media screen and (max-width: 720px) {
-      margin-top: 6rem;
+      margin-top: 6rem !important;
     }
   }
 `;
