@@ -47,6 +47,8 @@ const Nav = styled.nav`
   position: fixed;
   width: 100%;
   top: 0;
+  left: 0;
+  right: 0;
   background: #fff;
   z-index: 2;
   overflow: hidden;
@@ -56,9 +58,9 @@ const Nav = styled.nav`
   }
 
   & + * {
-    margin-top: 6rem !important;
+    margin-top: 6rem;
     @media screen and (max-width: 720px) {
-      margin-top: 8rem !important;
+      margin-top: 6rem;
     }
   }
 `;
@@ -86,38 +88,13 @@ const Logo = styled(Link)`
   }
 `;
 
-const slideOutFade = keyframes`
-  0% {
-    opacity: 1;
-    transform: rotate(-45deg) translateX(-0.5rem);
-  }
-  25% {
-    opacity: 0.9;
-    transform: rotate(-45deg) translateX(-1rem);
-  }
-  50% {
-    opacity: 0.75;
-    transform: rotate(-45deg) translateX(-1.5rem);
-  }
-  75% {
-    opacity: 0.5;
-    transform: rotate(-45deg) translateX(-2.5rem);
-  }
-  100% {
-    opacity: 0;
-    transform: rotate(-45deg) translateX(-5rem);
-  }
-`;
-
 const MenuToggle = styled.div`
   height: 2.4rem;
   width: 3.2rem;
   display: none;
-  margin-left: 1rem;
   transition: all 0.2s;
   flex-direction: column;
   justify-content: space-between;
-  margin-left: 0;
 
   & > div {
     display: block;
@@ -137,7 +114,7 @@ const MenuToggle = styled.div`
       }
 
       div:nth-child(2) {
-        animation: 0.3s ${slideOutFade} ease-out;
+        display: none;
       }
 
       div:nth-child(3) {
