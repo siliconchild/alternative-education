@@ -133,6 +133,12 @@ const Head = styled.div`
     flex-direction: column;
     align-items: flex-start;
   }
+  & > * {
+    margin: 0 0 2rem;
+    @media screen and (max-width: 720px) {
+      margin: 0;
+    }
+  }
 `;
 
 const Title = styled.h1`
