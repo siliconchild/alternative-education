@@ -6,6 +6,7 @@ import LocationSVG from '../images/location.svg';
 import sanitizeHtml from 'sanitize-html';
 import { RiTimerLine, RiPhoneLine, RiLinksLine, RiMailOpenLine } from 'react-icons/ri';
 import { MdExpandMore, MdExpandLess } from 'react-icons/md';
+import { AiOutlineCloseCircle } from 'react-icons/ai';
 import useWindowSize from '../hooks/useWindowSize';
 import Link from '../components/Link';
 import AddNewButton from '../components/AddNewButton';
@@ -97,6 +98,7 @@ export default function CareerOpportunities({ data: { careers } }) {
                       onClick={() => {
                         setWhichDescriptionShown(index);
                         setIsDescriptionShown(true);
+                        document.body.style.overflow = 'hidden';
                       }}>
                       <MdExpandMore />
                       <h5>More Information</h5>
@@ -104,9 +106,12 @@ export default function CareerOpportunities({ data: { careers } }) {
                   )}
                 </ListingCard>
                 <LisingDescriptionContainer show={whichDescriptionShown === index && isDescriptionShown}>
-                  <Button alert onClick={() => setIsDescriptionShown(false)}>
-                    Close
-                  </Button>
+                  <AiOutlineCloseCircle
+                    onClick={() => {
+                      setIsDescriptionShown(false);
+                      document.body.style.overflow = 'scroll';
+                    }}
+                  />
                   <LisingDescription
                     dangerouslySetInnerHTML={{
                       __html: cleanHTML,
@@ -272,23 +277,26 @@ const LisingDescriptionContainer = styled.div`
       @media screen and (max-width: 720px) {
         position: fixed;
         background: #fff;
-        top: 0;
-        right: 0;
-        bottom: 0;
-        left: 0;
-        width: 100%;
-        min-height: 100vh;
+        border-radius: 1.5rem;
+        box-shadow: var(--shadow-dark);
+        top: 7rem;
+        right: 1rem;
+        left: 1rem;
+        width: calc(100% - 2rem);
+        height: 88%;
         z-index: 3;
-        padding: 3rem 4rem;
-        margin-bottom: 2rem;
+        padding: 1.25rem 4.5rem;
       }
     `}
-  button {
+  svg {
     display: none;
     @media screen and (max-width: 720px) {
       display: flex;
       position: fixed;
-      right: 4rem;
+      right: 2rem;
+      height: 32px;
+      width: 32px;
+      fill: #d6495e;
     }
   }
 `;
@@ -311,6 +319,6 @@ const LisingDescription = styled.div`
     padding: 0 1.5rem;
   }
   @media screen and (max-width: 720px) {
-    margin-top: 6rem;
+    margin-top: 2rem;
   }
 `;
