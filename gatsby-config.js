@@ -59,7 +59,7 @@ module.exports = {
         short_name: `Alternative Education`,
         start_url: `/`,
         background_color: `#d4fcee`,
-        theme_color: `#5fcf80`,
+        theme_color: `#fff`,
         display: `standalone`,
         icon: `src/images/icon.png`, // This path is relative to the root of the site.
       },
