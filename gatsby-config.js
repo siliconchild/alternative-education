@@ -35,12 +35,21 @@ module.exports = {
     {
       resolve: 'gatsby-plugin-page-progress',
       options: {
-        includePaths: ['/', { regex: '^/blog' }],
+        includePaths: [{ regex: '^/blog/.+' }],
         excludePaths: [],
         height: 3,
         prependToBody: false,
         color: `#5fcf80`,
         footerHeight: 200,
+      },
+    },
+    {
+      resolve: `gatsby-plugin-nprogress`,
+      options: {
+        color: `#5fcf80`,
+        minimum: 0.8,
+        trickleSpeed: 100,
+        showSpinner: false,
       },
     },
     {
