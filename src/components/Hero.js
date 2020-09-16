@@ -1,6 +1,6 @@
 import React from 'react';
 import styled from 'styled-components';
-import Banner from '../images/idea.svg';
+import { ReactComponent as IdeaSVG } from '../images/idea.svg';
 
 export default function Hero() {
   return (
@@ -15,7 +15,7 @@ export default function Hero() {
           use the chat group to give us inputs and solutions as to how we should move forward.
         </p>
       </Content>
-      <Image src={Banner} />
+      <Image />
     </HeroContainer>
   );
 }
@@ -46,7 +46,7 @@ const Title = styled.h1`
   }
 `;
 
-const Image = styled.img`
+const Image = styled(IdeaSVG)`
   height: 45rem;
   padding: 3rem 5rem;
   @media screen and (max-width: 720px) {

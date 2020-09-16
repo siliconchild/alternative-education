@@ -18,6 +18,7 @@ module.exports = {
     `gatsby-plugin-sharp`,
     `gatsby-transformer-json`,
     `gatsby-plugin-remove-fingerprints`,
+    `gatsby-plugin-svgr`,
     {
       resolve: `gatsby-transformer-remark`,
       options: {
