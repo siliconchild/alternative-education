@@ -28,7 +28,6 @@ export const query = graphql`
             phone
             email
             address
-            slug
             image {
               localFiles {
                 childImageSharp {
@@ -38,6 +37,9 @@ export const query = graphql`
                 }
               }
             }
+          }
+          fields {
+            slug
           }
         }
       }
@@ -120,9 +122,9 @@ export default function LearningSpacesPage({ data: { allAirtableLearningSpaces }
         </Header>
         <LearningSpacesPreview>
           {currentList.map(el => {
-            let data;
-            el.item ? (data = el.item.node.data) : (data = el.node.data); // Fuse JS Returns a Nested Object as Search Result. This Prevents the need for an additional Map Method on The Result.
-            return <LearningSpaceCard key={el.recordId} props={data} />;
+            let node;
+            el.item ? (node = el.item.node) : (node = el.node); // Fuse JS Returns a Nested Object as Search Result. This Prevents the need for an additional Map Method on The Result.
+            return <LearningSpaceCard key={el.recordId} props={{ ...node.data, slug: node.fields.slug }} />;
           })}
         </LearningSpacesPreview>
         <div ref={next}></div>

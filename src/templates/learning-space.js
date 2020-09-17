@@ -10,7 +10,7 @@ import AddNewButton from '../components/AddNewButton.js';
 
 export const learningSpaceQuery = graphql`
   query($slug: String!) {
-    learningSpace: airtableLearningSpaces(data: { slug: { eq: $slug } }) {
+    learningSpace: airtableLearningSpaces(fields: { slug: { eq: $slug } }) {
       data {
         image {
           localFiles {

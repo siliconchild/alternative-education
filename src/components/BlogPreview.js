@@ -32,6 +32,8 @@ export default function BlogPreview() {
                 }
               }
               published
+            }
+            fields {
               slug
             }
           }
@@ -45,7 +47,7 @@ export default function BlogPreview() {
       <Title>Blog</Title>
       <BlogPreviewGrid>
         {allAirtableBlog.edges.map(({ node }) => (
-          <BlogCard key={node.recordId} props={node.data} />
+          <BlogCard key={node.recordId} props={{ ...node.data, slug: node.fields.slug }} />
         ))}
       </BlogPreviewGrid>
     </BlogPreviewContainer>

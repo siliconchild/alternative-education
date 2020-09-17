@@ -1,5 +1,6 @@
 const path = require('path');
 const { paginate } = require('gatsby-awesome-pagination');
+const slugify = require('./src/utls/slugify');
 
 exports.createPages = async ({ actions: { createPage }, graphql }) => {
   const {
@@ -13,6 +14,10 @@ exports.createPages = async ({ actions: { createPage }, graphql }) => {
         edges {
           node {
             data {
+              name
+              city
+            }
+            fields {
               slug
             }
           }
@@ -26,6 +31,10 @@ exports.createPages = async ({ actions: { createPage }, graphql }) => {
           node {
             recordId
             data {
+              title
+              author
+            }
+            fields {
               slug
             }
           }
@@ -35,7 +44,7 @@ exports.createPages = async ({ actions: { createPage }, graphql }) => {
   `);
 
   learningSpaces.edges.forEach(({ node }) => {
-    const { slug } = node.data;
+    const { slug } = node.fields;
     createPage({
       path: `/alternative-learning-spaces/${slug}/`,
       component: require.resolve('./src/templates/learning-space.js'),
@@ -54,7 +63,7 @@ exports.createPages = async ({ actions: { createPage }, graphql }) => {
   });
 
   blog.edges.forEach(({ node }) => {
-    const { slug } = node.data;
+    const { slug } = node.fields;
     createPage({
       path: `/blog/${slug}/`,
       component: require.resolve('./src/templates/blog-post.js'),
@@ -63,4 +72,24 @@ exports.createPages = async ({ actions: { createPage }, graphql }) => {
       },
     });
   });
+};
+
+exports.onCreateNode = ({ node, actions }) => {
+  const { createNodeField } = actions;
+  if (node.internal.type === `AirtableBlog`) {
+    let slug = slugify(`${node.data.title} ${node.data.author}`);
+    createNodeField({
+      node,
+      name: `slug`,
+      value: slug,
+    });
+  }
+  if (node.internal.type === `AirtableLearningSpaces`) {
+    let slug = slugify(`${node.data.name} ${node.data.city}`);
+    createNodeField({
+      node,
+      name: `slug`,
+      value: slug,
+    });
+  }
 };

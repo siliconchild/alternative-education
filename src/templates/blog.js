@@ -35,6 +35,8 @@ export const blogQuery = graphql`
               }
             }
             published
+          }
+          fields {
             slug
           }
         }
@@ -79,7 +81,7 @@ export default function blog({ data: { blogs }, pageContext }) {
         {blogs.edges
           // .filter((_, index) => String(index).match(new RegExp('[012]')))
           .map(({ node }) => (
-            <BlogCard key={node.recordId} props={{ ...node.data, column: false }} />
+            <BlogCard key={node.recordId} props={{ ...node.data, slug: node.fields.slug, column: false }} />
           ))}
       </BlogGrid>
       <Navigation>

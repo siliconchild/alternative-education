@@ -9,7 +9,7 @@ import { RiTimerLine } from 'react-icons/ri';
 
 export const blogPostQuery = graphql`
   query($slug: String!) {
-    blog: airtableBlog(data: { slug: { eq: $slug } }) {
+    blog: airtableBlog(fields: { slug: { eq: $slug } }) {
       data {
         title
         author
