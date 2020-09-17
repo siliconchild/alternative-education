@@ -1,10 +1,10 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect, useRef } from 'react';
 import styled, { css, keyframes } from 'styled-components';
 import { useStaticQuery, graphql } from 'gatsby';
 import Link from './Link';
 import useHasMounted from '../hooks/useHasMounted';
 
-export default function Navbar() {
+export default function Navbar({ location }) {
   const { allMenuJson } = useStaticQuery(graphql`
     {
       allMenuJson {
@@ -19,8 +19,20 @@ export default function Navbar() {
   `);
   let isMounted = useHasMounted();
   const [isHamburgerMenuOpen, setIsHamburgerMenuOpen] = useState(false);
+  const navRef = useRef({
+    location: null,
+  });
+
+  useEffect(() => {
+    if (!navRef.current.location) navRef.current.location = location;
+    else if (navRef.current.location !== location) {
+      if (isHamburgerMenuOpen) setIsHamburgerMenuOpen(false);
+      navRef.current.location = location;
+    }
+  });
+
   return (
-    <Nav>
+    <Nav ref={navRef}>
       <NavbarContainer>
         <Logo direction="left" to="/">
           Alt<span>Education</span>
@@ -35,7 +47,7 @@ export default function Navbar() {
         )}
         <Menu show={isHamburgerMenuOpen}>
           {allMenuJson.edges.map(({ node }) => (
-            <MenuItem onClick={() => setIsHamburgerMenuOpen(false)} key={node.link} to={node.link} direction="right">
+            <MenuItem key={node.link} to={node.link} direction="right">
               {node.title}
             </MenuItem>
           ))}
