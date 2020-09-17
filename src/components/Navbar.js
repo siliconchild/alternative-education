@@ -35,7 +35,7 @@ export default function Navbar() {
         )}
         <Menu show={isHamburgerMenuOpen}>
           {allMenuJson.edges.map(({ node }) => (
-            <MenuItem key={node.link} to={node.link} direction="right">
+            <MenuItem onClick={() => setIsHamburgerMenuOpen(false)} key={node.link} to={node.link} direction="right">
               {node.title}
             </MenuItem>
           ))}
