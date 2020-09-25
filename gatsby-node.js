@@ -93,3 +93,32 @@ exports.onCreateNode = ({ node, actions }) => {
     });
   }
 };
+
+exports.createSchemaCustomization = ({ actions }) => {
+  const { createTypes } = actions;
+  const typeDefs = `
+    type airtableCareers implements Node @dontInfer {
+      recordId: ID
+      data: Data!
+    }
+    type Data {
+      title: String
+      type: String
+      website: String
+      published: Date! @dateformat
+      publish: Boolean
+      organisation: String
+      location: String
+      phone: String
+      email: String
+      description: AirtableField
+    }
+    type AirtableField implements Node {
+      childMarkdownRemark: MarkdownRemark
+    }
+    type MarkdownRemark {
+      html: String
+    }
+  `;
+  createTypes(typeDefs);
+};

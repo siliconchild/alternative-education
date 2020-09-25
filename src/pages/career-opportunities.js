@@ -49,6 +49,10 @@ export default function CareerOpportunities({ data: { careers } }) {
     if (isMobile) setIsDescriptionShown(false);
   }, [isMobile]);
 
+  if (careers.edges.length === 0) {
+    return <NoData>No Active Listings</NoData>;
+  }
+
   return (
     <>
       <Container wide>
@@ -127,6 +131,13 @@ export default function CareerOpportunities({ data: { careers } }) {
     </>
   );
 }
+
+const NoData = styled.p`
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 60vh;
+`;
 
 const ListingCardContainer = styled.div`
   width: calc(50% - 2rem);
