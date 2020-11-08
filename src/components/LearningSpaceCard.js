@@ -11,13 +11,13 @@ export default function LearningSpaceCard({
   return (
     <LearningSpaceCardContainer>
       <Link to={`/alternative-learning-spaces/${slug}`} direction="right">
-        <Image fluid={image.localFiles[0].childImageSharp.fluid} />
+        <Image fluid={image && image.localFiles[0].childImageSharp.fluid} />
         <Title>{name}</Title>
       </Link>
       <Body>
         <Subtitle>{approach}</Subtitle>
         <Subtitle>{`${city}, ${state}`}</Subtitle>
-        <p>{description.substring(0, 150)}</p>
+        <p>{description && description.substring(0, 150)}</p>
         <ContactInfo to={website}>
           <FaGlobe /> {website ? String(website.split(/https?:\/\//g)[1]).substring(0, 30) : 'NA'}
         </ContactInfo>

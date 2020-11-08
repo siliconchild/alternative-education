@@ -53,7 +53,7 @@ export default function learningSpace({
     <>
       <Container wide>
         <LearningSpaceContainer>
-          <Image fluid={image.localFiles[0].childImageSharp.fluid} />
+          <Image fluid={image && image.localFiles[0].childImageSharp.fluid} />
           <Location>
             <FaMapMarkerAlt />
             {`${city}, ${state}`}
