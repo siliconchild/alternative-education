@@ -17,13 +17,7 @@
     "desc": "Know About & Participate in Events Happening in the Alternative Education Space",
     "image": "../images/menu-events.png"
   },
-  {
-    "title": "Career Opportunities",
-    "link": "/career-opportunities",
-    "desc": "Discover Career Openings Offered By Alternative Institutions Across India",
-    "image": "../images/menu-get-involved.png"
-  },
-  {
+ {
     "title": "Resources",
     "link": "/resources",
     "desc": "A handful of resources to explore more about Alternative Education. Including Books, Videos and Websites.",

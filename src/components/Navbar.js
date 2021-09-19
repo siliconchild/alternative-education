@@ -87,7 +87,7 @@ const NavbarContainer = styled.div`
   justify-content: space-between;
   flex-wrap: wrap;
   align-items: center;
-  padding: 1.25rem 0;
+  padding: 1.5rem 0;
   max-width: var(--container-width);
   width: 85%;
   margin: 0 auto;
@@ -99,7 +99,8 @@ const Logo = styled(Link)`
   cursor: pointer;
   color: var(--primary-color);
   text-transform: uppercase;
-  font-size: 2.5rem;
+  font-size: 2.6rem;
+  margin-top: 0.2rem;
   span {
     font-weight: 400;
   }
@@ -172,11 +173,11 @@ const Menu = styled.div`
 `;
 const MenuItem = styled(Link)`
   display: block;
-  font-size: 1.55rem;
+  font-size: 1.7rem;
   color: var(--text-light);
 
   &:not(:last-child) {
-    margin-right: 2rem;
+    margin-right: 2.5rem;
   }
 
   &:hover {
