@@ -15,7 +15,7 @@ export const learningSpaceQuery = graphql`
         image {
           localFiles {
             childImageSharp {
-              fluid(maxWidth: 900) {
+              fluid(maxWidth: 1400) {
                 ...GatsbyImageSharpFluid_withWebp
               }
             }
@@ -51,9 +51,13 @@ export default function learningSpace({
 }) {
   return (
     <>
-      <Container wide>
+      <Container>
         <LearningSpaceContainer>
-          <Image fluid={image && image.localFiles[0].childImageSharp.fluid} />
+          <Gallery>
+            {image?.localFiles.map(image => (
+              <Image fluid={image?.childImageSharp?.fluid} />
+            ))}
+          </Gallery>
           <Location>
             <FaMapMarkerAlt />
             {`${city}, ${state}`}
@@ -112,9 +116,20 @@ const LearningSpaceContainer = styled.div`
   }
 `;
 
+const Gallery = styled.div`
+  display: flex;
+  overflow-x: auto;
+  & > * {
+    flex: 1 0 calc(50% - 0.75rem);
+    &:not(:last-child) {
+      margin-right: 1rem;
+    }
+  }
+`;
+
 const Image = styled(Img)`
   height: 40rem;
-  border-radius: 1rem;
+  border-radius: 0.5rem;
   margin-bottom: 2rem;
   box-shadow: var(--shadow-light);
   @media screen and (max-width: 720px) {
